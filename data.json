@@ -1,0 +1,37 @@
+{
+    "about": {
+        "name": "Seshavarthini",
+        "title": "2nd year CSE Student",
+        "description": "data science enthusiast",
+        "email": "",
+        "phone": "7550042309",
+        "github": "",
+        "linkedin": ""
+    },
+    "skills": [
+        "excel",
+        " linux",
+        " communication"
+    ],
+    "projects": [
+        {
+            "title": "Portfolio website",
+            "description": "Dynamic website"
+        }
+    ],
+    "publications": [
+        {
+            "title": "AI-powered "
+        }
+    ],
+    "certifications": [
+        {
+            "title": "NPTEL Cloud computing fundamentals certification"
+        },
+        {
+            "title": "fundamentals of python"
+        }
+    ],
+    "achievements": [],
+    "experience": []
+}

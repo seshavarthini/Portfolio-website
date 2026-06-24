@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <style>
+body{
+    background:#121212;
+    color:white;
+    font-family:Arial, sans-serif;
+    padding:20px;
+}
+
+h1,h2,h3{
+    color:#ffb300;
+}
+
+button{
+    background:#ffb300;
+    color:black;
+    border:none;
+    padding:10px 15px;
+    border-radius:5px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ffcc33;
+}
+
+input,textarea{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:1px solid #ffb300;
+    border-radius:5px;
+    background:#1e1e1e;
+    color:white;
+}
+
+.admin-card{
+    background:#242424;
+    padding:15px;
+    margin:10px 0;
+    border-radius:10px;
+    border-left:4px solid #ffb300;
+}
+
+.admin-btn{
+    background:#ffb300;
+    color:black;
+    border:none;
+    padding:10px 15px;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.admin-btn:hover{
+    background:#ffc933;
+}
+
+.delete-btn{
+    background:#ffb300;
+    color:black;
+    border:none;
+    padding:8px 12px;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.delete-btn:hover{
+    background:#ffc933;
+}
+</style>
+</head>
+<body>
+<body>
+
+<div style="text-align:right; margin-bottom:20px;">
+
+    <a href="/logout">
+        <button class="admin-btn">
+            Logout
+        </button>
+    </a>
+
+</div>
+
+<h1>Portfolio Admin Panel</h1>
+
+<form method="POST">
+
+    <label>
+        <input type="checkbox" name="show_about"
+        {% if config.show_about %}checked{% endif %}>
+        About
+    </label>
+
+    <br><br>
+
+    <label>
+        <input type="checkbox" name="show_skills"
+        {% if config.show_skills %}checked{% endif %}>
+        Skills
+    </label>
+
+    <br><br>
+
+    <label>
+        <input type="checkbox" name="show_projects"
+        {% if config.show_projects %}checked{% endif %}>
+        Projects
+    </label>
+
+    <br><br>
+
+    <label>
+        <input type="checkbox" name="show_certifications"
+        {% if config.show_certifications %}checked{% endif %}>
+        Certifications
+    </label>
+
+    <br><br>
+
+    <label>
+        <input type="checkbox" name="show_publications"
+        {% if config.show_publications %}checked{% endif %}>
+        Publications
+    </label>
+
+    <br><br>
+
+    <label>
+        <input type="checkbox" name="show_achievements"
+        {% if config.show_achievements %}checked{% endif %}>
+        Achievements
+    </label>
+
+    <br><br>
+
+    <label>
+        <input type="checkbox" name="show_experience"
+        {% if config.show_experience %}checked{% endif %}>
+        Experience
+    </label>
+
+    <br><br>
+
+    <button type="submit">
+        Save Changes
+    </button>
+</form>
+
+<h2>About Me</h2>
+
+<form action="/update-about" method="POST">
+
+    <input
+        type="text"
+        name="name"
+        placeholder="Your Name"
+        required>
+
+    <br><br>
+
+    <input
+        type="text"
+        name="title"
+        placeholder="Your Title"
+        required>
+
+    <br><br>
+
+    <textarea
+        name="description"
+        placeholder="About Me"
+        rows="5"
+        cols="40"></textarea>
+
+    <br><br>
+
+    <button type="submit" class="admin.html">
+        Save About
+    </button>
+
+</form>
+
+<h2>Skills</h2>
+
+<form action="/update-skills" method="POST">
+
+    <textarea
+        name="skills"
+        placeholder="Python, SQL, HTML, CSS"
+        rows="4"
+        cols="40"></textarea>
+
+    <br><br>
+
+    <button type="submit" class="admin-html">
+        Save Skills
+    </button>
+
+</form>
+
+<hr>
+
+<h2>Add New Project</h2>
+
+<form action="/add-project" method="POST">
+
+    <input
+        type="text"
+        name="title"
+        placeholder="Project Title"
+        required>
+
+    <br><br>
+
+    <textarea
+        name="description"
+        placeholder="Project Description"
+        rows="4"
+        cols="40"
+        required></textarea>
+
+    <br><br>
+
+    <button type="submit" class="admin-btn">
+        Add Project
+    </button>
+
+</form>
+
+<h2>Existing Projects</h2>
+
+{% for project in projects %}
+
+<div class="admin-card">
+
+    <span>{{ project.title }}</span>
+
+    <a href="/delete-project/{{ loop.index0 }}">
+        <button type="button" class="delete-btn">Delete</button>
+    </a>
+
+</div>
+
+{% endfor %}
+
+<h2>Add Publication</h2>
+
+<form action="/add-publication" method="POST">
+
+    <input
+        type="text"
+        name="title"
+        placeholder="Publication Title"
+        required>
+
+    <button type="submit" class="admin-btn">
+        Add Publication
+    </button>
+
+</form>
+
+<h2>Existing Publications</h2>
+
+{% for publication in publications %}
+
+<div class="admin-card">
+
+    <span>{{ publication.title }}</span>
+
+    <a href="/delete-publication/{{ loop.index0 }}">
+        <button type="button" class="delete-btn">Delete</button>
+    </a>
+
+</div>
+
+{% endfor %}
+
+<h2>Add Certification</h2>
+
+<form action="/add-certification" method="POST">
+
+    <input
+        type="text"
+        name="title"
+        placeholder="Certification Name"
+        required>
+
+    <button type="submit" class="admin-btn">
+        Add Certification
+    </button>
+
+</form>
+<h2>Existing Certifications</h2>
+
+{% for certification in certifications %}
+
+<div class="admin-card">
+
+    <span>{{ certification.title }}</span>
+
+    <a href="/delete-certification/{{ loop.index0 }}">
+        <button type="button" class="delete-btn">Delete</button>
+    </a>
+
+</div>
+
+{% endfor %}
+
+<h2>Add Achievement</h2>
+
+<form action="/add-achievement" method="POST">
+
+    <input
+        type="text"
+        name="title"
+        placeholder="Achievement"
+        required>
+
+    <button type="submit" class="admin-btn">
+        Add Achievement
+    </button>
+
+</form>
+
+<h2>Existing Achievements</h2>
+
+{% for achievement in achievements %}
+
+<div class="admin-card">
+
+    <span>{{ achievement.title }}</span>
+
+    <a href="/delete-achievement/{{ loop.index0 }}">
+        <button type="button" class="delete-btn">Delete</button>
+    </a>
+
+</div>
+
+{% endfor %}
+
+
+<h2>Add Experience</h2>
+
+<form action="/add-experience" method="POST">
+
+    <input
+        type="text"
+        name="company"
+        placeholder="Company Name"
+        required>
+
+    <br><br>
+
+    <input
+        type="text"
+        name="role"
+        placeholder="Role"
+        required>
+
+    <br><br>
+
+    <button type="submit" class="admin-btn">
+        Add Experience
+    </button>
+
+</form>
+
+<h2>Existing Experience</h2>
+
+{% for exp in experience %}
+
+<div class="admin-card">
+
+    <span>{{ exp.role }}</span>
+
+    <a href="/delete-experience/{{ loop.index0 }}">
+        <button type="button" class="delete-btn">Delete</button>
+    </a>
+
+</div>
+
+{% endfor %}
+
+<form action="/update-contact" method="POST">
+
+    <input type="email" name="email"
+    placeholder="Email">
+
+    <input type="text" name="phone"
+    placeholder="Phone">
+
+    <input type="text" name="github"
+    placeholder="GitHub Link">
+
+    <input type="text" name="linkedin"
+    placeholder="LinkedIn Link">
+
+    <button type="submit" class="admin-html">
+        Save Contact
+    </button>
+
+</form>
+
+
+
+</body>
+</html>

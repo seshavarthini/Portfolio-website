@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seshavarthini | Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav>
+    <div class="logo">Seshavarthini.dev</div>
+
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <h1>Hi, I'm Seshavarthini</h1>
+    <p>Aspiring Software Developer</p>
+</section>
+
+{% if config.show_about %}
+<section id="about">
+
+    <h2>About Me</h2>
+
+    <div class="card">
+
+        <h3>{{ about.name }}</h3>
+
+        <p>{{ about.title }}</p>
+
+        <p>{{ about.description }}</p>
+
+    </div>
+
+</section>
+{% endif %}
+
+{% if config.show_skills %}
+<section id="skills">
+
+    <h2>Skills</h2>
+
+    <div class="card">
+
+        {% for skill in skills %}
+            <p>{{ skill }}</p>
+        {% endfor %}
+
+    </div>
+
+</section>
+{% endif %}
+
+{% if config.show_projects %}
+<section id="projects">
+
+    <h2>Projects</h2>
+
+    {% for project in projects %}
+
+    <div class="card">
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.description }}</p>
+    </div>
+
+    {% endfor %}
+
+</section>
+{% endif %}
+
+{% if config.show_certifications %}
+<section id="certifications">
+
+<h2>Certifications</h2>
+
+{% for certification in certifications %}
+<div class="card">
+    <h3>{{ certification.title }}</h3>
+</div>
+{% endfor %}
+
+</section>
+{% endif %}
+
+{% if config.show_publications %}
+<section id="publications">
+
+<h2>Publications</h2>
+
+{% for publication in publications %}
+<div class="card">
+    <h3>{{ publication.title }}</h3>
+</div>
+{% endfor %}
+
+</section>
+{% endif %}
+
+{% if config.show_achievements %}
+<section id="achievements">
+
+<h2>Achievements</h2>
+
+{% for achievement in achievements %}
+<div class="card">
+    <h3>{{ achievement.title }}</h3>
+</div>
+{% endfor %}
+
+</section>
+{% endif %}
+
+{% if config.show_experience %}
+<section id="experience">
+
+<h2>Experience</h2>
+
+{% for exp in experience %}
+<div class="card">
+    <h3>{{ exp.role }}</h3>
+    <p>{{ exp.company }}</p>
+</div>
+{% endfor %}
+
+</section>
+{% endif %}
+
+<section id="contact">
+
+    <h2>Contact</h2>
+
+    <div class="card">
+
+        <p>Email: {{ about.email }}</p>
+
+        {% if about.phone %}
+        <p>Phone: {{ about.phone }}</p>
+        {% endif %}
+
+        {% if about.github %}
+        <p>
+            GitHub:
+            <a href="{{ about.github }}" target="_blank">
+                View GitHub
+            </a>
+        </p>
+        {% endif %}
+
+        {% if about.linkedin %}
+        <p>
+            LinkedIn:
+            <a href="{{ about.linkedin }}" target="_blank">
+                View LinkedIn
+            </a>
+        </p>
+        {% endif %}
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 Seshavarthini |
+    <a href="/admin">Admin</a>
+</footer>
+
+</body>
+</html>
