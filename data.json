@@ -3,10 +3,10 @@
         "name": "Seshavarthini",
         "title": "2nd year CSE Student",
         "description": "data science enthusiast",
-        "email": "",
+        "email": "seshavarthini52@gmail.com",
         "phone": "7550042309",
-        "github": "",
-        "linkedin": ""
+        "github": "www.github/seshavarthini.com",
+        "linkedin": "www.linkedin.com/seshavarthini"
     },
     "skills": [
         "excel",
@@ -21,7 +21,8 @@
     ],
     "publications": [
         {
-            "title": "AI-powered "
+            "title": "AI-powered ",
+            "description": "it is good"
         }
     ],
     "certifications": [
@@ -33,5 +34,7 @@
         }
     ],
     "achievements": [],
-    "experience": []
+    "experience": [],
+    "objective": " ",
+    "education": []
 }

@@ -388,6 +388,61 @@ input,textarea{
 
 {% endfor %}
 
+<h2>Career Objective</h2>
+
+<form action="/update-objective" method="POST">
+
+    <textarea
+        name="objective"
+        rows="5">{{ objective }}</textarea>
+
+    <button type="submit">
+        Save Objective
+    </button>
+
+</form>
+
+<h2>Add Education</h2>
+
+<form action="/add-education" method="POST">
+
+    <input
+        type="text"
+        name="degree"
+        placeholder="Degree">
+
+    <input
+        type="text"
+        name="college"
+        placeholder="College">
+
+    <input
+        type="text"
+        name="cgpa"
+        placeholder="CGPA">
+
+    <button type="submit">
+        Add Education
+    </button>
+
+</form>
+
+<h2>Existing Education</h2>
+
+{% for edu in education %}
+
+<div class="admin-card">
+
+    <strong>{{ edu.degree }}</strong>
+
+    <p>{{ edu.college }}</p>
+
+    <p>CGPA: {{ edu.cgpa }}</p>
+
+</div>
+
+{% endfor %}
+
 <form action="/update-contact" method="POST">
 
     <input type="email" name="email"

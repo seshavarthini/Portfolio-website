@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect,session
+from flask import Flask, render_template, request, redirect,session,send_file
+from resume_generator import generate_resume
 import json
 app = Flask(__name__)
 app.secret_key = "portfolio_secret_123"
@@ -34,7 +35,9 @@ def home():
     publications=data["publications"],
     certifications=data["certifications"],
     achievements=data["achievements"],
-    experience=data["experience"]
+    experience=data["experience"],
+    objective=data["objective"],
+    education=data["education"]
 )
 
 
@@ -63,7 +66,9 @@ def admin():
         publications=data["publications"],
         certifications=data["certifications"],
         achievements=data["achievements"],
-        experience=data["experience"]
+        experience=data["experience"],
+        objective=data["objective"],
+        education=data["education"]
     )
 
 @app.route("/login", methods=["GET", "POST"])
@@ -88,6 +93,18 @@ def logout():
     session.pop("admin", None)
 
     return redirect("/")
+
+@app.route("/download-resume")
+def download_resume():
+
+    data = load_data()
+
+    pdf_path = generate_resume(data)
+
+    return send_file(
+        pdf_path,
+        as_attachment=True
+    )
 
 @app.route("/update-about", methods=["POST"])
 def update_about():
@@ -236,6 +253,34 @@ def delete_experience(index):
 
     if index < len(data["experiences"]):
         data["experiences"].pop(index)
+
+    save_data(data)
+
+    return redirect("/")
+
+@app.route("/add-education", methods=["POST"])
+def add_education():
+
+    data = load_data()
+
+    education = {
+        "degree": request.form["degree"],
+        "college": request.form["college"],
+        "cgpa": request.form["cgpa"]
+    }
+
+    data["education"].append(education)
+
+    save_data(data)
+
+    return redirect("/")
+
+@app.route("/update-objective", methods=["POST"])
+def update_objective():
+
+    data = load_data()
+
+    data["objective"] = request.form["objective"]
 
     save_data(data)
 

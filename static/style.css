@@ -80,6 +80,23 @@ h2{
     margin-bottom:15px;
 }
 
+.resume-btn {
+
+    background: #facc15;
+
+    color: black;
+
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
 footer{
     text-align:center;
     padding:25px;

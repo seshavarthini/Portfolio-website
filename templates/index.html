@@ -42,6 +42,26 @@
 </section>
 {% endif %}
 
+<section id="education">
+
+    <h2>Education</h2>
+
+    {% for edu in education %}
+
+    <div class="card">
+
+        <h3>{{ edu.degree }}</h3>
+
+        <p>{{ edu.college }}</p>
+
+        <p>CGPA: {{ edu.cgpa }}</p>
+
+    </div>
+
+    {% endfor %}
+
+</section>
+
 {% if config.show_skills %}
 <section id="skills">
 
@@ -134,8 +154,18 @@
 
 <section id="contact">
 
-    <h2>Contact</h2>
+    <a href="/download-resume">
 
+    <button class="resume-btn">
+
+        Download Resume
+
+    </button>
+
+    </a>
+
+    <h2>Contact</h2>
+    
     <div class="card">
 
         <p>Email: {{ about.email }}</p>
