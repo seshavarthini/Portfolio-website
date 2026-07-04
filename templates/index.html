@@ -54,8 +54,6 @@
 
         <p>{{ edu.college }}</p>
 
-        <p>CGPA: {{ edu.cgpa }}</p>
-
     </div>
 
     {% endfor %}
@@ -151,6 +149,38 @@
 
 </section>
 {% endif %}
+
+<section>
+
+
+
+<h2>Languages</h2>
+
+<div class="info-card">
+
+    {% for language in languages %}
+        <p>{{ language }}</p>
+    {% endfor %}
+
+</div>
+
+</section>
+
+<section>
+
+
+
+<h2>Strengths</h2>
+
+<div class="info-card">
+
+    {% for strength in strengths %}
+        <p>{{ strength }}</p>
+    {% endfor %}
+
+</div>
+
+</section>
 
 <section id="contact">
 

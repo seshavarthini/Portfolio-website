@@ -137,10 +137,27 @@ def generate_resume(data):
 
         content.append(
             Paragraph(
-              edu["title"],
+              f"<b>{edu['degree']}</b>",
               content_style
             )
         )
+
+        content.append(
+            Paragraph(
+              edu["college"],
+              content_style
+            )
+        )
+
+        if edu["cgpa"]:
+            content.append(
+                Paragraph(
+                  f"CGPA: {edu['cgpa']}",
+                  content_style
+                )
+            )
+
+    content.append(Spacer(1, 8))
 
 # education content here
 
@@ -188,21 +205,22 @@ def generate_resume(data):
             )
         )
 
-    content.append(HRFlowable(width="100%", thickness=1))
+    if data["achievements"]:
 
-    content.append(
-         Paragraph(
-          "ACHIEVEMENTS",
-          section_style
-        )
-    )
-
-    for achievement in data["achievements"]:
+        content.append(HRFlowable(width="100%", thickness=1))
 
         content.append(
             Paragraph(
-              f"• {achievement['title']}",
-              content_style
+              "ACHIEVEMENTS",
+              section_style
+            )
+        )
+
+    for achievement in data["achievements"]:
+        content.append(
+            Paragraph(
+                f"• {achievement['title']}",
+                content_style
             )
         )
 
@@ -234,20 +252,48 @@ def generate_resume(data):
 
     for pub in data["publications"]:
 
-        content.append(
-            Paragraph(
-              pub["title"],
-              content_style
+            content.append(
+              Paragraph(
+                f"• {pub['title']}",
+                content_style
+              )
             )
+
+    content.append(HRFlowable(width="100%", thickness=1))
+
+    content.append(
+        Paragraph(
+          "LANGUAGES",
+          section_style
         )
+    )
+
+    for language in data["languages"]:
 
         content.append(
             Paragraph(
-              pub["description"],
-              content_style
+               f"• {language}",
+               content_style
             )
         )
 
+    content.append(HRFlowable(width="100%", thickness=1))
+
+    content.append(
+        Paragraph(
+          "STRENGTHS",
+          section_style
+        )
+    )
+
+    for strength in data["strengths"]:
+
+        content.append(
+            Paragraph(
+               f"• {strength}",
+               content_style
+            )
+        )
     pdf.build(content)
 
     return "resume.pdf"

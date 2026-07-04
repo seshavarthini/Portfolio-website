@@ -5,36 +5,66 @@
         "description": "data science enthusiast",
         "email": "seshavarthini52@gmail.com",
         "phone": "7550042309",
-        "github": "www.github/seshavarthini.com",
-        "linkedin": "www.linkedin.com/seshavarthini"
+        "github": "https://github.com/seshavarthini",
+        "linkedin": "https://www.linkedin.com/in/seshavarthini-rajesh-1b1031383/"
     },
     "skills": [
-        "excel",
-        " linux",
-        " communication"
+        "Python",
+        "SQL",
+        "Excel",
+        "HTML",
+        "Git and Github",
+        " Flask",
+        " Canva",
+        " Figma"
     ],
     "projects": [
         {
-            "title": "Portfolio website",
-            "description": "Dynamic website"
+            "title": "AI-Powered Portfolio & ATS Resume Builder",
+            "description": "Created a full-stack portfolio website using Flask, HTML, CSS, and JSON with a secure admin panel for content management. Integrated an ATS-friendly resume generator that dynamically generates professional PDF resumes from portfolio information, ensuring that updates are reflected automatically across both the portfolio and resume."
+        },
+        {
+            "title": "Task and Time Management App",
+            "description": "Designed and developed the frontend interface of an offline task and time management application. Created responsive screens for task management, priority setting, Pomodoro timer, voice reminder interface, and routine history using a user-friendly design."
         }
     ],
     "publications": [
         {
-            "title": "AI-powered ",
-            "description": "it is good"
+            "title": "AI - Driven Bandwidth Optimization In Solar-Powered Community Mesh Networks For Rural Connectivity  -  1st International Conference on Advance in Science, Technology and Humanities (ICASTH'2026)"
+        },
+        {
+            "title": "Task And Time Management App  -  International Conference on Computers and Communication Engineering (ICCCE-26)"
         }
     ],
     "certifications": [
         {
-            "title": "NPTEL Cloud computing fundamentals certification"
+            "title": "NPTEL - Cloud Computing and Distributed Systems (Issued by NPTEL in 2026)"
         },
         {
-            "title": "fundamentals of python"
+            "title": "Infosys Springboard - Data Science (Issued by Infosys Springboard in 2026)"
         }
     ],
     "achievements": [],
     "experience": [],
-    "objective": " ",
-    "education": []
+    "objective": " Motivated Computer Science Engineering student seeking an internship to apply my technical skills, gain practical experience, and contribute to innovative software development projects.",
+    "education": [
+        {
+            "degree": "B.E (Computer Science Engineering) - 2nd year",
+            "college": "Jeppiaar Institute Of Technology",
+            "cgpa": ""
+        }
+    ],
+    "languages": [
+        "Tamil",
+        "Telugu",
+        "English",
+        "Hindi"
+    ],
+    "strengths": [
+        "Quick learner",
+        "Adaptability",
+        "Good listener and speaker",
+        "Self-motivated",
+        "Analytical thinking"
+    ]
 }

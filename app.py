@@ -18,7 +18,9 @@ portfolio_config = {
     "show_certifications": True,
     "show_publications": True,
     "show_achievements": True,
-    "show_experience": False
+    "show_experience": False,
+    "show_languages":True,
+    "show_strengths":True
 }
 
 @app.route("/")
@@ -37,7 +39,9 @@ def home():
     achievements=data["achievements"],
     experience=data["experience"],
     objective=data["objective"],
-    education=data["education"]
+    education=data["education"],
+    languages=data["languages"],
+    strengths=data["strengths"]
 )
 
 
@@ -54,6 +58,8 @@ def admin():
         portfolio_config["show_publications"] = "show_publications" in request.form
         portfolio_config["show_achievements"] = "show_achievements" in request.form
         portfolio_config["show_experience"] = "show_experience" in request.form
+        portfolio_config["show_languages"] = "show_languages" in request.form
+        portfolio_config["show_strengths"] = "show_strengths" in request.form
 
         return redirect("/")
 
@@ -68,7 +74,9 @@ def admin():
         achievements=data["achievements"],
         experience=data["experience"],
         objective=data["objective"],
-        education=data["education"]
+        education=data["education"],
+        languages=data["languages"],
+        strengths=data["strengths"]
     )
 
 @app.route("/login", methods=["GET", "POST"])
@@ -281,6 +289,54 @@ def update_objective():
     data = load_data()
 
     data["objective"] = request.form["objective"]
+
+    save_data(data)
+
+    return redirect("/")
+
+@app.route("/add-language", methods=["POST"])
+def add_language():
+
+    data = load_data()
+
+    language = request.form["language"]
+
+    data["languages"].append(language)
+
+    save_data(data)
+
+    return redirect("/")
+
+@app.route("/delete-language/<int:index>")
+def delete_language(index):
+
+    data = load_data()
+
+    del data["languages"][index]
+
+    save_data(data)
+
+    return redirect("/")
+
+@app.route("/add-strength", methods=["POST"])
+def add_strength():
+
+    data = load_data()
+
+    strength = request.form["strength"]
+
+    data["strengths"].append(strength)
+
+    save_data(data)
+
+    return redirect("/")
+
+@app.route("/delete-strength/<int:index>")
+def delete_strength(index):
+
+    data = load_data()
+
+    del data["strengths"][index]
 
     save_data(data)
 

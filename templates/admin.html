@@ -148,6 +148,22 @@ input,textarea{
 
     <br><br>
 
+    <label>
+        <input type="checkbox" name="show_languages"
+        {% if config.show_languages %}checked{% endif %}>
+        Languages
+    </label>
+
+    <br><br>
+
+    <label>
+        <input type="checkbox" name="show_strengths"
+        {% if config.show_strengths %}checked{% endif %}>
+        Strengths
+    </label>
+
+    <br><br>
+
     <button type="submit">
         Save Changes
     </button>
@@ -437,7 +453,73 @@ input,textarea{
 
     <p>{{ edu.college }}</p>
 
-    <p>CGPA: {{ edu.cgpa }}</p>
+    <a href="/delete-experience/{{ loop.index0 }}">
+        <button type="button" class="delete-btn">Delete</button>
+    </a>
+
+</div>
+
+{% endfor %}
+
+<h2>Add Language</h2>
+
+<form action="/add-language" method="POST">
+
+    <input
+        type="text"
+        name="language"
+        placeholder="Language"
+        required>
+
+    <button type="submit" class="admin-btn">
+        Add Language
+    </button>
+
+</form>
+
+<h2>Existing Languages</h2>
+
+{% for language in languages %}
+
+<div class="admin-card">
+
+    <span>{{ language }}</span>
+
+    <a href="/delete-language/{{ loop.index0 }}">
+        <button type="button" class="delete-btn">Delete</button>
+    </a>
+
+</div>
+
+{% endfor %}
+
+<h2>Add Strength</h2>
+
+<form action="/add-strength" method="POST">
+
+    <input
+        type="text"
+        name="strength"
+        placeholder="Strength"
+        required>
+
+    <button type="submit" class="admin-btn">
+        Add Strength
+    </button>
+
+</form>
+
+<h2>Existing Strengths</h2>
+
+{% for strength in strengths %}
+
+<div class="admin-card">
+
+    <span>{{ strength }}</span>
+
+    <a href="/delete-strength/{{ loop.index0 }}">
+        <button type="button" class="delete-btn">Delete</button>
+    </a>
 
 </div>
 

@@ -97,6 +97,19 @@ h2{
     font-weight: bold;
 }
 
+.info-card{
+    background: white;
+    border: 1px solid #f4a261;
+    border-radius: 20px;
+    padding: 20px 20px;
+    margin: 20px 0;
+}
+
+.info-card p{
+    margin: 8px 0;
+    font-size: 18px;
+}
+
 footer{
     text-align:center;
     padding:25px;
